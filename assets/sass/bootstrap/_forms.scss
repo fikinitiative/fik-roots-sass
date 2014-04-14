@@ -33,6 +33,7 @@ label {
   display: inline-block;
   margin-bottom: 5px;
   font-weight: bold;
+  color: $brand-primary;
 }
 
 
@@ -285,13 +286,13 @@ input[type="checkbox"],
 
 // Feedback states
 .has-success {
-  @include form-control-validation($state-success-text, $state-success-text, $state-success-bg);
+  @include form-control-validation($state-success-bg, $state-success-bg, $state-success-bg);
 }
 .has-warning {
-  @include form-control-validation($state-warning-text, $state-warning-text, $state-warning-bg);
+  @include form-control-validation($state-warning-bg, $state-warning-bg, $state-warning-bg);
 }
 .has-error {
-  @include form-control-validation($state-danger-text, $state-danger-text, $state-danger-bg);
+  @include form-control-validation($state-danger-bg, $state-danger-bg, $state-danger-bg);
 }
 
 
