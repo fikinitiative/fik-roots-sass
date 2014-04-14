@@ -8,13 +8,7 @@
   <![endif]-->
 
   <?php
-    do_action('get_header');
-    // Use Bootstrap's navbar if enabled in config.php
-    if (current_theme_supports('bootstrap-top-navbar')) {
-      get_template_part('templates/header-top-navbar');
-    } else {
-      get_template_part('templates/header');
-    }
+    do_action('get_header', $header_template_name);
   ?>
 
   <div class="wrap container" role="document">
@@ -30,7 +24,9 @@
     </div><!-- /.content -->
   </div><!-- /.wrap -->
 
-  <?php get_template_part('templates/footer'); ?>
+  <?php
+    do_action('get_footer', $footer_template_name);
+  ?>
 
 </body>
 </html>
