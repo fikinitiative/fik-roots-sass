@@ -4,11 +4,21 @@
  */
 // Headers
 // header, header-top-navbar, header-top-navbar-right
-$header_template_name = 'header-top-navbar';
+$header_template_name = 'header';
 
 // Footers
 // footer, footer-bootstrap-sticky
 $footer_template_name = 'footer';
+
+// Products
+// right
+$product_template_name = '';
+
+// Posts
+$post_template_name = '';
+
+// Home
+$home_template_name = '';
 
 // Others
 add_theme_support('root-relative-urls');    // Enable relative URLs
