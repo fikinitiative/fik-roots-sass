@@ -35,3 +35,12 @@ class custom_post_type_page_template {
 global $custom_post_type_page_template;
 $custom_post_type_page_template = new custom_post_type_page_template();
 
+
+function add_appearance_custom_css() {
+    $custom_css = get_theme_mod( 'fik_theme_css', '' );
+    if ($custom_css!=='') {
+        echo '<style type="text/css" id="fik_custom_css">'.$custom_css.'</style>';
+    }
+}
+add_action('wp_head', 'add_appearance_custom_css');
+
