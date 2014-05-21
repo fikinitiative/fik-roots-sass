@@ -10,8 +10,15 @@
       <a class="navbar-brand" href="<?php echo home_url(); ?>/">
         <?php the_store_logo(null, array('class' => 'logo')); ?>
       </a>
+      <?php echo get_bloginfo('description'); ?>
     </div>
-
+    <nav class="pull-right">
+      <?php
+        if (has_nav_menu('cart_menu')) :
+          wp_nav_menu(array('theme_location' => 'cart_menu', 'menu_class' => 'nav navbar-nav cart-menu'));
+        endif;
+        ?>
+    </nav>
     <nav class="collapse navbar-collapse" role="navigation">
       <?php
         if (has_nav_menu('primary_navigation')) :
