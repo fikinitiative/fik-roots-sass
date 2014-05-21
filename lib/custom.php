@@ -44,3 +44,46 @@ function add_appearance_custom_css() {
 }
 add_action('wp_head', 'add_appearance_custom_css');
 
+// Create and populate fik stores menus
+function add_nav_menu() {
+    $menu_name = 'Primary Navigation';
+    $menu_location = 'primary_navigation';
+    if (!menu_exists($menu_name)) {
+        $menu_id = wp_create_nav_menu($menu_name);
+        insert_primary_navigation_menu_items($menu_id);
+        assign_menu_to_theme_location($menu_id, $menu_location);
+    }
+}
+add_action('after_switch_theme', 'add_nav_menu');
+
+function menu_exists($menu_name) {
+    return wp_get_nav_menu_object($menu_name);
+}
+
+function assign_menu_to_theme_location($menu_id, $menu_location) {
+    if( !has_nav_menu( $menu_location ) ){
+        $locations = get_theme_mod('nav_menu_locations');
+        $locations[$menu_location] = $menu_id;
+        set_theme_mod( 'nav_menu_locations', $locations );
+    }
+}
+
+function insert_primary_navigation_menu_items($menu_id) {
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('Home'),
+            'menu-item-classes' => 'home',
+            'menu-item-url' => home_url( '/' ),
+            'menu-item-status' => 'publish'));
+
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('Blog'),
+            'menu-item-classes' => 'blog',
+            'menu-item-url' => home_url( '/' ),
+            'menu-item-status' => 'publish'));
+
+        wp_update_nav_menu_item($menu_id, 0, array(
+            'menu-item-title' =>  __('Store'),
+            'menu-item-classes' => 'store',
+            'menu-item-url' => home_url('/products/'),
+            'menu-item-status' => 'publish'));
+}
