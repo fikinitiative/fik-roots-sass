@@ -9,32 +9,17 @@ function selectTemplate($template_name) {
 add_action('get_header', 'selectTemplate', 10, 1);
 add_action('get_footer', 'selectTemplate', 10, 1);
 
-class custom_post_type_page_template {
-
-    function custom_post_type_page_template() {
-        add_filter( 'template_include', array(&$this, 'custom_post_type_page_template_template_include') );
+function fik_product_template( $template ){
+  if ( get_post_type() === 'fik_product' ) :
+    $new_template = locate_template( array( "templates/content-fik_product.php" ) );
+    if ( "" !== $new_template ) {
+      return $new_template ;
     }
-
-    function custom_post_type_page_template_template_include($template) {
-        global $wp_query, $post;
-
-        if ( is_singular() && !is_page() ) {
-            $id = get_queried_object_id();
-            $new_template = 'template-' . get_post_type() . $product_template_name . '.php';
-            if ( $new_template && file_exists(get_query_template( 'page', $new_template )) ) {
-                $wp_query->is_page = 1;
-                $templates[] = $new_template;
-
-                return get_query_template( 'page', $templates );
-            }
-        }
-
-        return $template;
-    }
+    endif;
+    var_dump(get_post_type());
+    return $template;
 }
-global $custom_post_type_page_template;
-$custom_post_type_page_template = new custom_post_type_page_template();
-
+//add_filter( 'template_include', 'fik_product_template');
 
 function add_appearance_custom_css() {
     $custom_css = get_theme_mod( 'fik_theme_css', '' );
