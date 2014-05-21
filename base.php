@@ -13,6 +13,7 @@
 
   <div class="wrap container" role="document">
     <div class="content row">
+      <?php dynamic_sidebar('sidebar-primary-top'); ?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
@@ -21,6 +22,7 @@
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
+      <?php dynamic_sidebar('sidebar-primary-bottom'); ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
 
