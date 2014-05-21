@@ -16,10 +16,9 @@ function fik_product_template( $template ){
       return $new_template ;
     }
     endif;
-    var_dump(get_post_type());
     return $template;
 }
-//add_filter( 'template_include', 'fik_product_template');
+add_filter( 'template_include', 'fik_product_template');
 
 function add_appearance_custom_css() {
     $custom_css = get_theme_mod( 'fik_theme_css', '' );

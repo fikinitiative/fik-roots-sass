@@ -1,3 +1,4 @@
+<?php setup_postdata($post); ?>
 <?php if ( is_tax('store-section') || is_post_type_archive( 'fik_product' ) || is_home() || is_page_template( 'page-templates/store-front-page.php' ) || is_search() ) : // Only display product excerpt for home, archive page, store section and search ?>
 
         <li class="<?php echo get_theme_mod( 'fik_product_thumb_type', 'col-sm-4' ); ?>">
@@ -7,45 +8,51 @@
         </li>
 
 <?php else: ?>
+    <?php dynamic_sidebar('sidebar-product-top'); ?>
 
-    <article itemscope itemtype="http://schema.org/Product" id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <header>
-            <h1 itemprop="name" class="entry-title product-title"><?php the_title(); ?></h1>
-        </header>
+    <article itemscope itemtype="http://schema.org/Product" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
+
         <div class="container">
-            <div class="product-gallery col-md-7">
-                <?php if(has_post_thumbnail()) : ?>
-                    <div class="product-image-frame">
+            <?php if(has_post_thumbnail()) : ?>
+            <div class="product-images col-sm-6">
+                <div class="product-image-frame">
                     <?php
-                        // We print the post thumbnail (if it exists) with a maximum size of 620px x 9999px:
-                        the_post_thumbnail('post-thumbnail',array('data-zoom-image' => array_shift(array_values(wp_get_attachment_image_src( get_post_thumbnail_id(get_the_ID()), 'large' ))),'itemprop' => "image"));
+                        // We print the product thumbnail
+                        the_post_thumbnail('product-thumbnail',array('class' => 'img-thumbnail'));
                     ?>
-                    </div>
-                    <?php
+                </div>
+                <?php
                     // this function outputs a <ul> with class="product-image-thumbnails" where each <li> is a thumbnil that links to a biger image (sizes specified in function).
                     // We also pass the size of the zoom image which url and size are returned as data attributes of the img. The last 2 sizes are the max width of the video thumbnail and the max width of a video embed
                     the_product_gallery_thumbnails(array(64,64) , array(620,9999), array(1240,930),64,620,FALSE);
                     ?>
+            </div>
+            <?php endif; ?>
 
+            <div class="product-info col-sm-6">
+                <header class="col-sm-10">
+                    <h1 itemprop="name" class="product-title"><?php the_title(); ?></h1>
+                </header>
+                <div class="price col-sm-2">
+                <?php the_fik_price(); ?>
+                </div>
+                <div class="product-options col-sm-12">
+                <?php the_fik_add_to_cart_button(); ?>
+                </div>
+                <div class="product-description col-sm-12">
+                <?php the_content(); ?>
+                </div>
+                <?php if ( is_active_sidebar( 'sidebar-product-main' ) ) : ?>
+                    <footer>
+                    <?php dynamic_sidebar('sidebar-product-main'); ?>
+                    <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
+                    </footer>
                 <?php endif; ?>
             </div>
-        <div class="price-and-purchase col-md-5">
-            <?php the_fik_price(); ?>
-            <?php the_fik_add_to_cart_button(); ?>
-            <?php if ( is_active_sidebar( 'sidebar-4' ) ) : ?>
-                <div id="product-secondary" class="widget-area" role="complementary">
-                <?php dynamic_sidebar( 'sidebar-4' ); ?>
-                </div><!-- #secondary -->
-            <?php endif; ?>
-        </div>
-        <div itemprop="description" class="entry-content col-md-5">
-            <?php the_content( __( 'Continue reading <span class="meta-nav">&rarr;</span>', 'twentytwelve' ) ); ?>
-            <?php wp_link_pages( array( 'before' => '<div class="page-links">' . __( 'Pages:', 'twentytwelve' ), 'after' => '</div>' ) ); ?>
-        </div><!-- .entry-content -->
-        <footer>
-            <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
-        </footer>
+    
         <?php comments_template('/templates/comments.php'); ?>
     </article>
+
+    <?php dynamic_sidebar('sidebar-product-bottom'); ?>
 
 <?php endif; ?>
