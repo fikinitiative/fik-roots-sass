@@ -56,7 +56,7 @@
                 <?php the_content(); ?>
                 </div>
                 <?php if ( is_active_sidebar( 'sidebar-product-main' ) ) : ?>
-                    <footer>
+                    <footer class="col-sm-12">
                     <?php dynamic_sidebar('sidebar-product-main'); ?>
                     <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
                     </footer>
