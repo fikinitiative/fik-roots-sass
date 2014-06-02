@@ -63,6 +63,10 @@
         <?php comments_template('/templates/comments.php'); ?>
     </article>
 
-    <?php dynamic_sidebar('sidebar-product-bottom'); ?>
+    <?php if ( is_active_sidebar( 'sidebar-product-bottom' ) ) : ?>
+        <div class="col-sm-12">
+        <?php dynamic_sidebar('sidebar-product-bottom'); ?>
+        </div>
+    <?php endif ?>
 
 <?php endif; ?>

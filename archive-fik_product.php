@@ -19,4 +19,9 @@
         </ul>
     </nav>
 <?php endif; ?>
-<?php dynamic_sidebar('sidebar-store-bottom'); ?>
+
+<?php if ( is_active_sidebar( 'sidebar-store-bottom' ) ) : ?>
+    <div class="col-sm-12">
+    <?php dynamic_sidebar('sidebar-store-bottom'); ?>
+    </div>
+<?php endif; ?>
