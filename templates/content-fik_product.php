@@ -8,11 +8,14 @@
     </a>
     <?php } ?>
     <div class="details-area">
+    <div class="product-price pull-right">
+        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a>
+    </div>
     <h2 class="product-name">
     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
     </h2>
-    <div class="product-price">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a>
+    <div class="product-sections">
+        <?php echo get_the_term_list($post->ID, 'store-section', '', ', ', '' ) ?>
     </div>
     </div>
     </article>
