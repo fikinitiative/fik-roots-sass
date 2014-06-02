@@ -8,12 +8,14 @@ add_action('get_footer', 'selectTemplate', 10, 1);
 
 function fik_product_template( $template ){
     if ( get_post_type() === 'fik_product' ) {
-        $new_template = locate_template( array( "templates/content-fik_product.php" ) );
-        if ( "" !== $new_template ) {
-            return $new_template ;
-        }
+        if (is_single()){
+            $new_template = locate_template( array( "templates/content-fik_product.php" ) );
+            if ( "" !== $new_template ) {
+                return $new_template ;
+            }
+        }    
+    
     }
-
     return $template;
 }
 add_filter( 'template_include', 'fik_product_template');
