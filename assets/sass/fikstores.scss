@@ -1,0 +1,27 @@
+
+
+
+/* Post */
+.post{
+	header {
+		margin-bottom: 2em;
+		h2{
+			a{
+				font-size: 20px;
+				font-weight: 400;
+			}
+			margin-bottom: 6px;
+		}
+		p.byline {
+			float: left;
+			margin: 0 1ex 0 0;
+			font-weight: 600;
+			a {
+				color: #333;
+			}
+		}
+		time{
+			font-weight: 600;
+		}
+	}
+}
