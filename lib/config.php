@@ -74,6 +74,7 @@ function roots_display_sidebar() {
     array(
       'is_404',
       'is_front_page',
+      array('is_page', array('Cart')),
       array('is_singular', array('fik_product')),
       array('is_post_type_archive', array('fik_product'))
     ),
