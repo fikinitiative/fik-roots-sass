@@ -1,11 +1,21 @@
 <?php setup_postdata($post); ?>
 <?php if ( is_tax('store-section') || is_post_type_archive( 'fik_product' ) || is_home() || is_page_template( 'page-templates/store-front-page.php' ) || is_search() ) : // Only display product excerpt for home, archive page, store section and search ?>
 
-        <li class="<?php echo get_theme_mod( 'fik_product_thumb_type', 'col-sm-4' ); ?>">
-            <div class="fik2012-thumb"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php if ( has_post_thumbnail() ) { the_post_thumbnail( array('class' => 'img-responsive') ); } ?></a></div>
-            <h2 class="product-title"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a></h2>
-            <div class="product-price"><a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a></div>
-        </li>
+    <article class="product-preview col-sm-3">
+    <?php if ( has_post_thumbnail() ) { ?>
+    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="product-image">
+    <?php the_post_thumbnail( 'product-thumbnail', array('class' => 'img-responsive') ); ?>    
+    </a>
+    <?php } ?>
+    <div class="details-area">
+    <h2 class="product-name">
+    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
+    </h2>
+    <div class="product-price">
+        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a>
+    </div>
+    </div>
+    </article>
 
 <?php else: ?>
     <?php dynamic_sidebar('sidebar-product-top'); ?>
@@ -18,7 +28,7 @@
                 <div class="product-image-frame">
                     <?php
                         // We print the product thumbnail
-                        the_post_thumbnail('product-thumbnail',array('class' => 'img-thumbnail'));
+                        the_post_thumbnail('product-main',array('class' => 'img-thumbnail'));
                     ?>
                 </div>
                 <?php
@@ -49,7 +59,7 @@
                     </footer>
                 <?php endif; ?>
             </div>
-    
+
         <?php comments_template('/templates/comments.php'); ?>
     </article>
 
