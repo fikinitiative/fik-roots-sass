@@ -8,11 +8,14 @@
     </a>
     <?php } ?>
     <div class="details-area">
+    <div class="product-price pull-right">
+        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a>
+    </div>
     <h2 class="product-name">
     <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
     </h2>
-    <div class="product-price">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a>
+    <div class="product-sections">
+        <?php echo get_the_term_list($post->ID, 'store-section', '', ', ', '' ) ?>
     </div>
     </div>
     </article>
@@ -53,7 +56,7 @@
                 <?php the_content(); ?>
                 </div>
                 <?php if ( is_active_sidebar( 'sidebar-product-main' ) ) : ?>
-                    <footer>
+                    <footer class="col-sm-12">
                     <?php dynamic_sidebar('sidebar-product-main'); ?>
                     <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
                     </footer>
@@ -63,6 +66,10 @@
         <?php comments_template('/templates/comments.php'); ?>
     </article>
 
-    <?php dynamic_sidebar('sidebar-product-bottom'); ?>
+    <?php if ( is_active_sidebar( 'sidebar-product-bottom' ) ) : ?>
+        <div class="col-sm-12">
+        <?php dynamic_sidebar('sidebar-product-bottom'); ?>
+        </div>
+    <?php endif ?>
 
 <?php endif; ?>
