@@ -1,5 +1,7 @@
 
-
+div.wrap.container{
+	margin-top: $line-height-computed;
+}
 
 /* Post */
 .post{
@@ -23,5 +25,41 @@
 		time{
 			font-weight: 600;
 		}
+	}
+}
+
+/* Sections */
+#primary-top, #primary-bottom {
+	color: #fff;
+	background: $brand-primary;
+}
+
+/* Footer */
+footer.content-info {
+	background: #1a1a1a;
+	color: #333333;
+	h3{
+		color: $brand-primary;
+		font-size: 16px;
+		font-weight: 600;
+	}
+	a{
+		color: #999999;
+	}
+	a:hover{
+		color: $brand-primary;
+		text-decoration: none;
+	}
+}
+footer.closing{
+	background: #333333;
+	color: #ffffff;
+	.copy{
+		float: left;
+		padding: 10px 10px 10px 0;
+		color: #000;
+	}
+	#menu-footer {
+		float: left;
 	}
 }
