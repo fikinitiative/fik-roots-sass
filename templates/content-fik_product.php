@@ -54,13 +54,13 @@
                 </div>
                 <div class="product-description col-sm-12">
                 <?php the_content(); ?>
-                </div>
+                </div> 
+                <footer class="col-sm-12">
                 <?php if ( is_active_sidebar( 'sidebar-product-main' ) ) : ?>
-                    <footer class="col-sm-12">
                     <?php dynamic_sidebar('sidebar-product-main'); ?>
-                    <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
-                    </footer>
                 <?php endif; ?>
+                <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
+                </footer>
             </div>
 
         <?php comments_template('/templates/comments.php'); ?>
