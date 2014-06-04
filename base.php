@@ -10,14 +10,17 @@
   <?php
     do_action('get_header', $header_template_name);
   ?>
+  
+  <?php if ( is_active_sidebar( 'sidebar-primary-top' ) ) : ?>
+  <section id="primary-top">
+    <div class="container">
+      <?php dynamic_sidebar('sidebar-primary-top'); ?>
+    </div>
+  </section>
+  <?php endif; ?>
 
   <div class="wrap container" role="document">
     <div class="content row">
-    <?php if ( is_active_sidebar( 'sidebar-primary-top' ) ) : ?>
-      <section id="primary-top" class="col-sm-12">
-      <?php dynamic_sidebar('sidebar-primary-top'); ?>
-      </section>
-    <?php endif; ?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
@@ -26,9 +29,17 @@
           <?php include roots_sidebar_path(); ?>
         </aside><!-- /.sidebar -->
       <?php endif; ?>
-      <?php dynamic_sidebar('sidebar-primary-bottom'); ?>
     </div><!-- /.content -->
   </div><!-- /.wrap -->
+
+  <?php if ( is_active_sidebar( 'sidebar-primary-bottom' ) ) : ?>
+  <section id="primary-bottom">
+    <div class="container">
+      <?php dynamic_sidebar('sidebar-primary-bottom'); ?>
+    </div>
+  </section>
+  <?php endif; ?>
+
 
   <?php
     do_action('get_footer', $footer_template_name);
