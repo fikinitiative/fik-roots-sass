@@ -13,7 +13,11 @@
 
   <div class="wrap container" role="document">
     <div class="content row">
+    <?php if ( is_active_sidebar( 'sidebar-primary-top' ) ) : ?>
+      <section id="primary-top" class="col-sm-12">
       <?php dynamic_sidebar('sidebar-primary-top'); ?>
+      </section>
+    <?php endif; ?>
       <main class="main <?php echo roots_main_class(); ?>" role="main">
         <?php include roots_template_path(); ?>
       </main><!-- /.main -->
