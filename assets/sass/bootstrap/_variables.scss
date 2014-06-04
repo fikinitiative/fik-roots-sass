@@ -17,7 +17,7 @@ $gray:                   lighten(#000, 33.5%) !default; // #555
 $gray-light:             lighten(#000, 60%) !default;   // #999
 $gray-lighter:           lighten(#000, 93.5%) !default; // #eee
 
-$brand-primary:         #73c9cb !default;
+$brand-primary:         #27bdc3 !default;
 $brand-primary-dark:    #2f4549 !default;
 $brand-success:         #38cf6b !default;
 $brand-info:            #73c9cb !default;
@@ -332,7 +332,7 @@ $container-lg:                 $container-large-desktop !default;
 
 // Basics of a navbar
 $navbar-height:                    60px !default;
-$navbar-margin-bottom:             $line-height-computed !default;
+$navbar-margin-bottom:             0;
 $navbar-border-radius:             $border-radius-base !default;
 $navbar-padding-horizontal:        floor(($grid-gutter-width / 2)) !default;
 $navbar-padding-vertical:          (($navbar-height - $line-height-computed) / 2) !default;
@@ -394,7 +394,7 @@ $navbar-inverse-toggle-border-color:        #333 !default;
 
 //=== Shared nav styles
 $nav-link-padding:                          10px 15px !default;
-$nav-link-hover-bg:                         $gray-lighter !default;
+$nav-link-hover-bg:                         transparent !default;
 
 $nav-disabled-link-color:                   $gray-light !default;
 $nav-disabled-link-hover-color:             $gray-light !default;
