@@ -7,9 +7,11 @@
     <?php get_search_form(); ?>
 <?php endif; ?>
 
+<div class="row">
 <?php while (have_posts()) : the_post(); ?>
     <?php get_template_part('templates/content-fik_product', get_post_format()); ?>
 <?php endwhile; ?>
+</div>
 
 <?php if ($wp_query->max_num_pages > 1) : ?>
     <nav class="post-nav">
@@ -21,7 +23,5 @@
 <?php endif; ?>
 
 <?php if ( is_active_sidebar( 'sidebar-store-bottom' ) ) : ?>
-    <div class="col-sm-12">
     <?php dynamic_sidebar('sidebar-store-bottom'); ?>
-    </div>
 <?php endif; ?>
