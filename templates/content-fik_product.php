@@ -1,23 +1,23 @@
 <?php setup_postdata($post); ?>
 <?php if ( is_tax('store-section') || is_post_type_archive( 'fik_product' ) || is_home() || is_page_template( 'page-templates/store-front-page.php' ) || is_search() ) : // Only display product excerpt for home, archive page, store section and search ?>
 
-    <article class="product-preview col-sm-3">
+<article class="product-preview col-sm-3">
+<a href="<?php the_permalink(); ?>">
+    <span class="prod-image-wrap">
+    <span class="onsale">Rebajado</span>
     <?php if ( has_post_thumbnail() ) { ?>
-    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>" class="product-image">
-    <?php the_post_thumbnail( 'product-thumbnail', array('class' => 'img-responsive') ); ?>    
-    </a>
+        <?php the_post_thumbnail( 'product-thumbnail', array('class' => 'img-responsive') ); ?>    
     <?php } ?>
-    <div class="details-area">
-    <div class="product-price pull-right">
-        <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_fik_price(); ?></a>
-    </div>
-    <h2 class="product-name">
-    <a href="<?php the_permalink(); ?>" title="<?php the_title(); ?>"><?php the_title(); ?></a>
-    </h2>
-    <div class="product-sections">
+    </span>
+    <h3><?php the_title(); ?></h3>
+    <?php the_fik_price(); ?>
+    <span class="sections">
         <?php echo get_the_term_list($post->ID, 'store-section', '', ', ', '' ) ?>
-    </div>
-    </div>
+    </span>
+</a>
+
+
+
     </article>
 
 <?php else: ?>
@@ -25,7 +25,7 @@
 
     <article itemscope itemtype="http://schema.org/Product" id="product-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-        <div class="container">
+        <div class="row">
             <?php if(has_post_thumbnail()) : ?>
             <div class="product-images col-sm-6">
                 <div class="product-image-frame">
@@ -43,10 +43,11 @@
             <?php endif; ?>
 
             <div class="product-info col-sm-6">
-                <header class="col-sm-10">
+                <div class="row">
+                <header class="col-sm-9">
                     <h1 itemprop="name" class="product-title"><?php the_title(); ?></h1>
                 </header>
-                <div class="price col-sm-2">
+                <div class="price col-sm-3">
                 <?php the_fik_price(); ?>
                 </div>
                 <div class="product-options col-sm-12">
@@ -61,15 +62,14 @@
                 <?php endif; ?>
                 <?php wp_link_pages(array('before' => '<nav class="page-nav"><p>' . __('Pages:', 'roots'), 'after' => '</p></nav>')); ?>
                 </footer>
+                </div>
             </div>
-
+        </div>
         <?php comments_template('/templates/comments.php'); ?>
     </article>
 
     <?php if ( is_active_sidebar( 'sidebar-product-bottom' ) ) : ?>
-        <div class="col-sm-12">
         <?php dynamic_sidebar('sidebar-product-bottom'); ?>
-        </div>
     <?php endif ?>
 
 <?php endif; ?>
