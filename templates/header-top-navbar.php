@@ -10,7 +10,9 @@
       <a class="navbar-brand" href="<?php echo home_url(); ?>/">
         <?php the_store_logo(null, array('class' => 'logo')); ?>
       </a>
-      <?php echo get_bloginfo('description'); ?>
+      <?php if(get_bloginfo('description') !=''){ ?>
+        <span class="brand-description"><?php echo get_bloginfo('description'); ?></span>
+      <?php } ?>
     </div>
     <nav class="pull-right">
       <?php
