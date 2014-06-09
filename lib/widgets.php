@@ -68,6 +68,24 @@ function roots_widgets_init() {
   ));
 
   register_sidebar(array(
+    'name'          => __('Blog Main', 'roots'),
+    'id'            => 'sidebar-blog-main',
+    'before_widget' => '<section class="widget col-xs-12 %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
+    'name'          => __('Blog Post', 'roots'),
+    'id'            => 'sidebar-blog-post',
+    'before_widget' => '<section class="widget col-xs-12 %1$s %2$s">',
+    'after_widget'  => '</section>',
+    'before_title'  => '<h3>',
+    'after_title'   => '</h3>',
+  ));
+
+  register_sidebar(array(
     'name'          => __('Primary Bottom', 'roots'),
     'id'            => 'sidebar-primary-bottom',
     'before_widget' => '<section class="widget %1$s %2$s">',
