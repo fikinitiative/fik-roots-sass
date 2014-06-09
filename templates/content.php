@@ -1,8 +1,7 @@
 <article <?php post_class(); ?>>
-	<?php 
-
-
-    the_post_thumbnail( $size, array('class' => "img-responsive",) ) ?>
+	<a href="<?php the_permalink(); ?>">
+    <?php the_post_thumbnail( 'blog-medium', array('class' => "img-responsive",) ) ?>
+  </a>
   <header>
   	<div class="top">
     	<h2 class="entry-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
